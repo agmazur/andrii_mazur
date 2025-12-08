@@ -8,8 +8,4 @@ def text_extractoin_from_html(html):
             pass
         else:
             p_text.append(ptag.get_text())
-
-
-
-    print(p_text)
     return p_text

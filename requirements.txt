@@ -3,3 +3,9 @@ pandas
 streamlit
 matplotlib
 bs4
+transformers
+transformers 
+datasets
+sentencepiece 
+sacremoses 
+huggingface_hub

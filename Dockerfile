@@ -7,5 +7,5 @@ WORKDIR /andrii_mazur
 COPY src /andrii_mazur/src
 
 EXPOSE 8501
-
-CMD ["streamlit", "run", "src/window_strimlit.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["python", "main.py"]
+# CMD ["streamlit", "run", "src/window_strimlit.py", "--server.port=8501", "--server.address=0.0.0.0"]
