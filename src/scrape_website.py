@@ -20,4 +20,4 @@ def scrape_website(url):
     response = fetch(BASE_URL)
     if response is None:
         raise SystemExit("Stopping: could not fetch the page.")
-    
+    return response.text
