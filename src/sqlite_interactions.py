@@ -3,6 +3,8 @@ import os
 from pathlib import Path
 import pandas as pd
 def initialize_database_from_root(db_name="databank.db", folder_name="data"):
+    import streamlit as st
+    st.write("--- initialize_database_from_root ---")
     """
     Initializes an SQLite database file using a path relative to the 
     directory where this Python script is located (i.e., the project root).
@@ -34,6 +36,8 @@ initialize_database_from_root()
 def putdata_to_databank(websitename,word_array,sentiment_p_n,sentiment_value):
     """
     websitename = string, other are arrays"""
+    import streamlit as st
+    st.write("--- initialize_database_from_root ---")
     data_length=len(word_array)
     df1={
         "website_name":[websitename for _ in range(data_length)],
@@ -56,6 +60,8 @@ def putdata_to_databank(websitename,word_array,sentiment_p_n,sentiment_value):
         conn.close()
 
 def retrieve_data_by_website(websitename):
+    import streamlit as st
+    st.write("--- retrieve_data_by_website ---")
     project_root = Path(__file__).resolve().parent.resolve().parent
     data_folder_path = project_root / "data"
     db_path = data_folder_path / "databank.db"

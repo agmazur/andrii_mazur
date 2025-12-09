@@ -1,5 +1,7 @@
 
 def basik_sentiment_analysis(word_array):
+    import streamlit as st
+    st.write("--- basik_sentiment_analysis ---")
     import torch
     from transformers import pipeline
     sentiment_pipeline = pipeline(

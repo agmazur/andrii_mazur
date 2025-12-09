@@ -1,4 +1,6 @@
 def creaet_graphic(dataframe):
+    import streamlit as st
+    st.write("--- create_graphic ---")
     sentiment=dataframe["sentiment_p_n"].value_counts().sort_index()
     sentiment_dict = sentiment.to_dict()
     print(sentiment_dict)
@@ -14,4 +16,5 @@ def creaet_graphic(dataframe):
     for i, v in enumerate(sentiment_series.values):
         ax.text(i, v + 0.5, str(v), ha='center', va='bottom')
     plt.xticks(rotation=0)
-    plt.savefig('sentiment_bar_chart.png')
+    # plt.savefig('sentiment_bar_chart.png')
+    return fig
