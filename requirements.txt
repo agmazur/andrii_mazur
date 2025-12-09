@@ -1,3 +1,4 @@
+
 requests
 pandas 
 streamlit
@@ -9,4 +10,3 @@ datasets
 sentencepiece 
 sacremoses 
 huggingface_hub
-torch

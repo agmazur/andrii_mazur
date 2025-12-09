@@ -67,6 +67,19 @@ def retrieve_data_by_website(websitename):
             sql_query, 
             conn
         )
-    print(df_retrieved)
-
-     
+    # print(df_retrieved)
+    return df_retrieved
+def fetch_different_websites():
+    project_root = Path(__file__).resolve().parent.resolve().parent
+    data_folder_path = project_root / "data"
+    db_path = data_folder_path / "databank.db"
+    conn = sqlite3.connect(db_path)
+    sql_query = f"""
+        SELECT website_name  FROM table1 
+        """
+    df_retrieved = pd.read_sql(
+            sql_query, 
+            conn
+        )
+    # print(df_retrieved['website_name'].unique())
+    return df_retrieved['website_name'].unique()
