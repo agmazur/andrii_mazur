@@ -33,7 +33,7 @@ def streamlit_window():
         extracted_text=text_extractoin_from_html(scraped_html)
         better_text=clean_array_strings(extracted_text)
         sentient_p_n,sentient_value=basik_sentiment_analysis(better_text)
-        putdata_to_databank(websitelink,extracted_text,sentient_p_n,sentient_value)
+        putdata_to_databank(websitelink,better_text,sentient_p_n,sentient_value)
         fetched_df=retrieve_data_by_website(websitelink)
         my_plt=creaet_graphic(fetched_df)
 
