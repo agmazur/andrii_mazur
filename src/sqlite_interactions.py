@@ -1,7 +1,7 @@
 import sqlite3
 import os
 from pathlib import Path
-
+import pandas as pd
 def initialize_database_from_root(db_name="databank.db", folder_name="data"):
     """
     Initializes an SQLite database file using a path relative to the 
@@ -25,17 +25,15 @@ def initialize_database_from_root(db_name="databank.db", folder_name="data"):
             """
             cursor.execute(create_table_sql)
             conn.commit()
-        print(f" Successfully initialized database at: {db_path}")
-        print(" Table 'table1' created with the specified schema.")
+        # print(f" Successfully initialized database at: {db_path}")
+        # print(" Table 'table1' created with the specified schema.")
     except sqlite3.Error as e:
-        print(f"An error occurred during database initialization: {e}")
-    except NameError:
-        print(" Error: __file__ is not defined. You may be running this code in an interactive environment (like an IDE console or Jupyter Notebook). This method only works when run as a script.")
+        print(f"didnt work{e}")
 initialize_database_from_root()
+
 def putdata_to_databank(websitename,word_array,sentiment_p_n,sentiment_value):
     """
     websitename = string, other are arrays"""
-    import pandas as pd
     data_length=len(word_array)
     df1={
         "website_name":[websitename for _ in range(data_length)],
@@ -56,3 +54,19 @@ def putdata_to_databank(websitename,word_array,sentiment_p_n,sentiment_value):
         print(f"did not push")
     finally:
         conn.close()
+
+def retrieve_data_by_website(websitename):
+    project_root = Path(__file__).resolve().parent.resolve().parent
+    data_folder_path = project_root / "data"
+    db_path = data_folder_path / "databank.db"
+    conn = sqlite3.connect(db_path)
+    sql_query = f"""
+        SELECT * FROM table1 WHERE website_name = '{websitename}'
+        """
+    df_retrieved = pd.read_sql(
+            sql_query, 
+            conn
+        )
+    print(df_retrieved)
+
+     
