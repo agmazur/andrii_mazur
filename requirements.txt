@@ -10,3 +10,4 @@ datasets
 sentencepiece 
 sacremoses 
 huggingface_hub
+re
